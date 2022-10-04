@@ -1,0 +1,247 @@
+#1
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            double r = 2, x, y;
+            Console.WriteLine("Введите значние Х:");
+            x = double.Parse(Console.ReadLine());
+            Console.WriteLine("Введите значние Y:");
+            y = double.Parse(Console.ReadLine());
+            if (Math.Abs(x*x+y*y-r*r) <= 1 / 1000)
+            {
+                Console.WriteLine("Точка лежит в окружности");
+            }
+            else
+            {
+                Console.WriteLine("Точка не лежит в окружности");
+            }
+        }
+    }
+}
+#3
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int a, c, b;
+            Console.WriteLine("Введите значение А:");
+            a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите значение B:");
+            b = Convert.ToInt32(Console.ReadLine());
+            if (a > 0)
+            {
+                c = Math.Max(a, b);
+            }
+            else
+            {
+                c = Math.Min(a, b);
+            }
+            Console.WriteLine("Ответ:" + c);
+        }
+    }
+}
+#4
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int a = 5, c = 8, b = 6;
+            Console.WriteLine(Math.Max(Math.Min(a, b),c));
+            
+        }
+    }
+}
+#2.1
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int count, girl = 0, boy = 0, height, bheight = 0, gheight = 0;
+            string user_input;
+            Console.WriteLine("Введите количество учеников: ");
+            count = Convert.ToInt32(Console.ReadLine());
+            for ( int i = count; i > 0; i--)
+            {
+                Console.WriteLine("Ты мальчик?");
+                user_input = Console.ReadLine();
+                if (user_input == "Да")
+                {
+                    boy++;
+                    Console.WriteLine("Введи свой рост: ");
+                    height = Convert.ToInt32(Console.ReadLine());
+                    bheight += height;
+                }
+                else
+                {
+                    girl++;
+                    Console.WriteLine("Введи свой рост: ");
+                    height = Convert.ToInt32(Console.ReadLine());
+                    gheight += height;
+                }
+            }
+            Console.WriteLine("Средний рост мальчиков: " + (bheight/boy));
+            Console.WriteLine("Средний рост девочек: " + (gheight / girl));
+        }
+    }
+}
+#2.5
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int norm, answ = 0;
+            Console.WriteLine("Ввдите норматив: ");
+            norm = Convert.ToInt32(Console.ReadLine());
+            float res;
+            byte count = 3;
+            for (int i = 3; i > 0; i--)
+            {
+                Console.WriteLine("Ученик номер {0} введите свой результат", count);
+                count--;
+                res = Convert.ToInt32(Console.ReadLine());
+                if (res <= norm)
+                {
+                    answ++;
+                }
+            }
+            Console.WriteLine("Норматив выполнили: " + answ);
+        } 
+    }
+}
+
+3 УРОВЕНЬ
+#4
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int n = 1, r1, r2, x, y, count = 0;
+            Console.WriteLine("Введите радиус первого круга(меньшего)");
+            r1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите радиус второго круга(большего)");
+            r2 = Convert.ToInt32(Console.ReadLine());
+            while (n != 0)
+            {
+                Console.WriteLine("Введите кооридинату точки по оси x: ");
+                x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Введите координату точки по оси y: ");
+                y = Convert.ToInt32(Console.ReadLine());
+                if (((x * x + y * y) > r1 * r1) & ((x * x + y * y) <= r2 * r2))
+                {
+                    count++;
+                }
+                Console.WriteLine("Введите 0 для остановки программы и вывода результата, для продолжения введите 1");
+                n = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("Попадает в кольцо: " + count);
+        }
+    }
+}
+#11
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int n = 1, b, lose = 0, s = 0, score = 1, k = 0, i = 1;
+
+                Console.WriteLine("Введите количество баллов для зачета");
+                b = Convert.ToInt32(Console.ReadLine());
+                while (score != 0)
+                {
+                Console.WriteLine("Для завершения подсчета введите 0");
+                    Console.WriteLine("Введите сумму баллов за 4 экзамена у ученика номер " + i );
+                i++;
+                    score = Convert.ToInt32(Console.ReadLine());
+                    if (score >= b)
+                    {
+                        s += score;
+                        k++;
+                    }
+                    else
+                    {
+                        lose++;
+                    }
+                }
+            Console.WriteLine("Средний балл учеников: " + (s / k));
+            Console.WriteLine("Количество учеников, не сдавших экзамен: " + lose);
+        }
+    }
+}
+#12
+using System;
+namespace Prog
+{
+    class Program
+    {
+        static void Main()
+        {
+            int r = 1, v;
+            while (r != 0)
+            {
+                Console.WriteLine("Введите значение r, для завершения программы нажмите 0");
+                r = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Если хотите найти площадь квадрата нажмите 1, треугольника 2, круга 3");
+                v = Convert.ToInt32(Console.ReadLine());
+                if (v == 1)
+                    Console.WriteLine("Площадь квадрата: " + r * r);
+                else if (v == 2)
+                    Console.WriteLine("Площадь треугольника: " + (Math.Sqrt(3) / 4) * (r * r));
+                else
+                    Console.WriteLine("Площадь круга: " + Math.PI * r * r);
+            }
+
+        }
+    }
+}
+#13
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int n = 1, a, b, v;
+            while (n != 0)
+            {
+                Console.WriteLine("Введите значение А: ");
+                a = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Введите значение B: ");
+                b = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Введите 1 если нужно найти площадь прямоугольника,\n" +
+                "2 для площади кольца, 3 для площади равнобедренного треугольника со сторонами A, B, B: ");
+                v = Convert.ToInt32(Console.ReadLine());
+                if (v == 1)
+                    Console.WriteLine("Площадь треугольника: " + (a*b));
+                else if (v == 3)
+                    Console.WriteLine("Площадь треугольника: "+ (a / 4) * Math.Sqrt(4*b*b-a*a));
+                else
+                    Console.WriteLine("Площадь кольца: " + (Math.Abs(Math.PI * a * a - Math.PI * b * b)));
+                Console.WriteLine("Для завершения программы введите 0, чтобы продолжить вычисления нажмите 1");
+                n = Convert.ToInt32(Console.ReadLine());
+            }
+        }
+    }
+}
