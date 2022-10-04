@@ -207,3 +207,55 @@ namespace Lab27
         }   
     }
 }
+3 lvl
+#1
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            double s1, s, i, fact, y;
+            for (double x = 0.1f; x <= 1; x += 0.1f)
+            {
+                s = 1; s1 = 1; i = 1;
+                do
+                {
+                    fact = (2 * i) * (2 * i - 1);
+                    s1 = s1 * (-1 * x * x) / fact;
+                    y = Math.Cos(x);
+                    s += s1;
+                    i++;
+                } while (Math.Abs(s1) > 0.0001);
+                Console.WriteLine("{0:f4} {1:f4} {2:f4}", x ,s, y);
+            }
+        }
+    }
+}
+#8
+using System;
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            double s1, s, i, y, fact = 1;
+            for (double x = 0.1; x <= 1; x += 0.05f)
+            {
+                s = 1; s1 = 1; i = 1;
+                do
+                {
+                    fact *= i;
+                    s1 = s1 * (2 * x) / i;
+                    y = Math.Exp((2 * x));
+                    s += s1;
+                    i++;
+                } while (Math.Abs(s1) > 0.0001);
+                Console.WriteLine("{0:f4} {1:f4} {2:f4}", x, s, y);
+            }
+        }
+    }
+}
