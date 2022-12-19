@@ -1,0 +1,617 @@
+1 уровень
+#1
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = 10, k = 5;
+            double vn, vk, va, c;
+            Fact(n, out vn);
+            Fact(k, out vk);
+            Fact(n - k, out va);
+            c = vn / (vk * va);
+            Console.WriteLine(c);
+        }
+        static void Fact(int x, out double answ)
+        {
+            int i;
+            answ = 1;
+            for (i = 1; i <= x; i++)
+            {
+                answ = answ * i;
+            }
+        }
+    }
+}
+#2----
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a=3,b=3,c=4;
+            int a1 = 5, b1 = 4, c1 = 6;
+            double p,S1,S,p1;
+            P(a, b, c, out p);
+            P(a1, b1, c1, out p1);
+            S = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+            S1 = Math.Sqrt(p1 * (p1 - a1) * (p1 - b1) * (p1 - c1));
+            if (S1 > S)
+            {
+                Console.WriteLine(S1);
+            }
+            else
+                Console.WriteLine(S);
+            Console.WriteLine();
+        }
+        static void P(int x,int y,int z, out double answ)
+        {
+            answ = (x + y + z) / 2;
+        }
+    }
+}
+2 уровень
+#6	-------
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int n = 7, n1 = 8;
+            int[] A = new int[n+n1-2] { 1, 2, 3, 10, 5, 6, 7,0,0,0,0,0,0 }; 
+            int[] B = new int[n1] { 10, 11, 12, 20, 14, 15, 16, 17 };
+            A = Del(A);
+            B = Del(B);
+            for (int i = n-1;i < n + n1-2; i++)
+            {
+                A[i] = B[i - (n-1)];
+            }
+
+            foreach (int i in A)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        static int[] Del(int[] array)
+        {
+            int maxi = 0;
+            int max = array[0];
+            for (int i = 1; i < array.Length-8; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    maxi = i;
+                }
+            }
+            for (int i = maxi; i < array.Length-1; i++)
+            {
+                array[i] = array[i + 1];
+            }
+            return array;
+        }
+    }
+}
+#10-------
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 6;
+
+            int[,] mas = new int[n, n] {    {4, 3, -20, 2, -60,10 },
+                                            {10, 0, 2, 23, 4,56},
+                                            {15, 8, -34, 46, 8,76},
+                                            {87, 2, 3, 140, 4,45},
+                                            {2, 12, 2, 3, 40,87},
+                                            {200, 12, 0, 3, 14,130}};
+            int max = mas[0, 0], maxj = 0;
+            int min = mas[0, 0], minj = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    if (mas[i, j] > max)
+                    {
+                        max = mas[i, j];
+                        maxj = j;
+                    }
+                }
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (mas[i, j] < min)
+                    {
+                        min = mas[i, j];
+                        minj = j;
+                    }
+                }
+            }
+            Console.WriteLine(maxj);
+            System.Console.WriteLine(minj);
+            mas = Del(mas, maxj, minj);
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        static int[,] Del(int[,] array,int maj, int mij)
+        {
+            if (maj > mij)
+            {
+                maj--;
+            }
+            int p;
+            for (int i = 0; i < Math.Sqrt(array.Length); i++)
+            {
+                for (int j = mij; j < Math.Sqrt(array.Length) - 1; j++)
+                {
+                    p = array[i, j];
+                    array[i, j] = array[i, j + 1];
+                    array[i, j + 1] = p;
+                }
+            }
+            for (int i = 0; i < Math.Sqrt(array.Length); i++)
+            {
+                for (int j = maj; j < Math.Sqrt(array.Length) - 1; j++)
+                {
+                    p = array[i, j];
+                    array[i, j] = array[i, j + 1];
+                    array[i, j + 1] = p;
+                }
+            }
+            return array;
+        }
+    }
+}
+#23   1st way
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 4;
+
+            int[,] mas = new int[n, n]
+            {
+                { 13, 4, 12, 12 },
+
+                { 4, 4, 4, 10 },
+
+                { 4, 4, 4, 6 },
+
+                { 4, 4, 4, 6 },
+            };
+            int[,] mas2 = new int[n, n]
+            {
+                { 13, 5, -6, 0 },
+
+                { 10, 4, 4, 6 },
+
+                { -2, 2, 20, 1 },
+
+                { 7, 30, 8, 0 },
+            };
+
+            Console.WriteLine("Data #1");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();//вывод матрицы
+
+            Redone(mas);
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Data #2");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas2[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();//вывод матрицы 2
+
+            Redone(mas2);
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas2[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+        static int[,] Redone(int[,] data)
+        {
+            int p = 0;
+            int min = data[0, 0];
+            int maxi = 0, maxj = 0;
+            int[] mas = new int[15];
+            int max = data[0, 0];
+            const int n = 4;
+            for (int g = 0; g < 15; g+=3)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (data[i, j] > max)
+                        {
+                            max = data[i, j];
+                            maxi = i;
+                            maxj = j;
+                        }
+                        if (data[i, j] < min)
+                        {
+                            min = data[i, j];
+                        }
+                    }
+                }
+                data[maxi, maxj] = min;
+                mas[g] = max * 2;
+                mas[g + 1] = maxi;
+                mas[g + 2] = maxj;
+                max = 0;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    data[i, j] = data[i, j] / 2;
+                }
+            }
+            for (int x = 0; x < 15; x += 3)
+            {
+                data[mas[x + 1], mas[x + 2]] = mas[x];
+            }
+            return data;
+        }
+    }
+}
+#23 2nd way 
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 4;
+
+            int[,] mas = new int[n, n]
+            {
+                { 13, 4, 12, 12 },
+
+                { 4, 4, 4, 10 },
+
+                { 4, 4, 4, 6 },
+
+                { 4, 4, 4, 6 },
+            };
+            int[,] mas2 = new int[n, n]
+            {
+                { 13, 5, -6, 0 },
+
+                { 10, 4, 4, 6 },
+
+                { -2, 2, 20, 1 },
+
+                { 7, 30, 8, 0 },
+            };
+            int p = 0;
+            int min = mas[0, 0];
+            int maxi = 0, maxj = 0;
+            int[] array = new int[15];
+            int max = mas[0, 0];
+
+            Console.WriteLine("Data #1");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }      //print data 1
+            Console.WriteLine();
+
+
+            for (int g = 0; g < 15; g += 3) // max 5  for data 1
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (mas[i, j] > max)
+                        {
+                            max = mas[i, j];
+                            maxi = i;
+                            maxj = j;
+                        }
+                        if (mas[i, j] < min)
+                        {
+                            min = mas[i, j];
+                        }
+                    }
+                }
+                mas[maxi, maxj] = min;
+                array[g] = max * 2;
+                array[g + 1] = maxi;
+                array[g + 2] = maxj;
+                max = 0;
+            }
+
+            Redone(mas,array);
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }           // print data 1 result
+            Console.WriteLine();
+
+            Console.WriteLine("Data #2");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas2[i, j]);
+                }
+                Console.WriteLine();
+            }       //print data 2
+            Console.WriteLine();
+
+            for (int g = 0; g < 15; g += 3) // max 5  for data 2
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (mas2[i, j] > max)
+                        {
+                            max = mas2[i, j];
+                            maxi = i;
+                            maxj = j;
+                        }
+                        if (mas2[i, j] < min)
+                        {
+                            min = mas2[i, j];
+                        }
+                    }
+                }
+                mas2[maxi, maxj] = min;
+                array[g] = max * 2;
+                array[g + 1] = maxi;
+                array[g + 2] = maxj;
+                max = 0;
+            }
+
+            Redone(mas2,array);
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas2[i, j]);
+                }
+                Console.WriteLine();
+            }       //print data 2 result
+            Console.WriteLine();
+        }
+        static int[,] Redone(int[,] data, int[] mas)
+        {
+            const int n = 4;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    data[i, j] = data[i, j] / 2;
+                }
+            }
+            for (int x = 0; x < 15; x += 3)
+            {
+                data[mas[x + 1], mas[x + 2]] = mas[x];
+            }
+            return data;
+        }
+    }
+}
+3 УРОВЕНЬ
+#3
+using System;
+class Program
+{
+    delegate int[] Change(int[] array); 
+    static void Main()
+    {
+        int summ = 0;
+        double sr = 0;
+        int[] mas = { 1, 2, 3, 4, 5, 6, 7, 8, 9,10};
+        for (int i = 0; i < mas.Length; i++)
+        {
+            sr += mas[i];
+        }
+        sr = sr / mas.Length;
+        if (mas[0] > sr)
+        {
+            Sum(mas, ChangePosFirst, out summ);
+        }
+        else
+        {
+            Sum(mas, ChangePosLast, out summ);
+        }
+        Console.WriteLine(summ);
+    }
+    static int[] ChangePosFirst(int[] array)
+    {
+        int p = 0;
+        for (int i = 0; i < array.Length-1; i = i+2)
+        {
+            p = array[i];
+            array[i] = array[i + 1];
+            array[i + 1] = p;
+        }
+        return array;
+    }
+    static int[] ChangePosLast(int[] array)
+    {
+        int p = 0;
+        for (int i = array.Length-1; i > 0; i = i - 2)
+        {
+            p = array[i];
+            array[i] = array[i-1];
+            array[i-1] = p;
+        }
+        return array;
+    }
+    static void Sum(int [] array, Change Deleg ,out int suma)
+    {
+        suma = 0;
+        array = Deleg(array);
+        for (int i = 1; i < array.Length; i = i+2)
+        {
+            suma += array[i];
+        }
+    }
+} 
+#10 Delegat
+namespace Program
+{
+    class Program
+    {
+        delegate int Optimazer(int[,] array, out int minij, out int maximj);
+        static void Main()
+        {
+            int p,g;
+
+            const int n = 6;
+
+            int[,] mas = new int[n, n] {    {4, 3, 2, 2, -6,10 },
+                                            {10, 0, 2, 23, 4,56},
+                                            {15, 8, -34, 46, 8,76},
+                                            {87, 2, 3, 140, 4,45},
+                                            {2, 12, 2, 3, 40,87},
+                                            {200, 12, 0, 3, 40,130}};
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            
+            mas = Del(mas, MaxAndMin);
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            MaxAndMin(mas, out p, out g);
+            Console.WriteLine(p+" "+g);
+        }
+        static int MaxAndMin(int[,] array, out int maxj, out int minj )
+        {
+            const int n = 6;
+            maxj = 0;
+            minj = 0;
+            int max = array[0, 0];
+            int min = array[0, 0];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    if (array[i, j] > max)
+                    {
+                        max = array[i, j];
+                        maxj = j;
+                    }
+                }
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (array[i, j] < min)
+                    {
+                        min = array[i, j];
+                        minj = j;
+                    }
+                }
+            }
+            return 0;
+        }
+        static int[,] Del(int[,] array, Optimazer Coordinat)
+        {
+            int p;
+            int mij, maj;
+            Coordinat(array, out mij, out maj);
+            if (maj > mij)
+            {
+                maj--;
+            }
+            for (int i = 0; i < Math.Sqrt(array.Length); i++)
+            {
+                for (int j = mij; j < Math.Sqrt(array.Length) - 1; j++)
+                {
+                    p = array[i, j];
+                    array[i, j] = array[i, j + 1];
+                    array[i, j + 1] = p;
+                }
+            }
+            for (int i = 0; i < Math.Sqrt(array.Length); i++)
+            {
+                for (int j = maj; j < Math.Sqrt(array.Length) - 1; j++)
+                {
+                    p = array[i, j];
+                    array[i, j] = array[i, j + 1];
+                    array[i, j + 1] = p;
+                }
+            }
+            return array;
+        }
+    }
+}

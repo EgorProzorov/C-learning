@@ -1,0 +1,853 @@
+using System;
+#3
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int sum = 0;
+            int[,] mas = new int[4, 4] { { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 }, { 1, 2, 3, 4 } };
+            for (int i = 0; i < 4; i++)
+            {
+                        sum += mas[i, i];
+
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
+#6
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int minid = 0,min;
+
+            int[,] mas = new int[4, 7] { { -15, 8, 7, 5, 2, 3, 4 }, { 1, 2, 3, 2, 0, 9, 4 }, { 100, 24, 5, -32, 3, 3, -4 }, { 1, -12, 6, 7, 2, 3, -40 }};
+            int[] array = new int[4];
+            for ( int i = 0; i < 4; i++)
+            {
+                min = mas[i, 0];
+                minid = 0;
+                for ( int j = 1; j < 7; j++)
+                {
+                    if (mas[i, j] < min)
+                    {
+                        min = mas[i, j];
+                        minid = j;
+                    }
+                }
+                array[i] = minid;
+            }
+            foreach (int i in array)
+                Console.Write(i + " ");
+        }
+    }
+}
+#12
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int max, maxi = 0, maxj = 0;
+            int[,] mas = new int[6, 7] {    {45, 8, 7, 4, 4, 3, 4 },
+                                            {3, 8, 7, 4, 2, 23, 4 },
+                                            {15, 8, 7, 23, 34, 46, 8 },
+                                            {1, 2, 3, 2, 0, 9, 4 },
+                                            {10, 24, 5, 2, 3, 3, 4 },
+                                            {1, 12, 6, 7, 2, 3, 40 }};
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            max = mas[0, 0];
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (mas[i, j] > max)
+                    {
+                        max = mas[i, j];
+                        maxj = j;
+                        maxi = i;
+                    }
+                }
+            }
+            Console.WriteLine(maxj);
+            for (int i = maxi; i < 6-1; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    mas[i, j] = mas[i + 1, j];
+                }
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = maxj; j < 7-1; j++)
+                {
+                    mas[i, j] = mas[i, j+1];
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#13+++++++
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int max, maxj = 0, f = 3, p = 0;
+            int[,] mas = new int[5, 5] {    {45, 8, 4, 3, 4 },
+                                            {3, 50, 2, 23, 4 },
+                                            {15, 8, 34, 46, 8 },
+                                            {1, 2, 3, 12, 4 },
+                                            {1, 12, 2, 3, 40 }};
+            max = mas[0, 0];
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 5; i++)
+            {
+                    if (mas[i, i] > max)
+                    {
+                        max = mas[i, i];
+                        maxj = i;
+                    }
+            }
+            for (int k = 0; k < 5; k++)
+            {
+                p = mas[k, maxj];
+                mas[k, maxj] = mas[k, f];
+                mas[k, f] = p;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+        }
+    }
+}
+#17
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int max, min = 0, minid;
+            int[,] mas = new int[5, 5] {    {45, 8, 4, 3, 4 },
+                                            {10, 50, 2, 23, 4 },
+                                            {15, 8, -34, 46, 8 },
+                                            {1, 2, 3, 12, 4 },
+                                            {1, 12, 2, 3, 40 }};
+            max = mas[0, 0];
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 5; i++)
+            {
+                minid = 0;
+                min = mas[i, 0];
+                for (int j = 0; j < 5; j++)
+                {
+                    if (mas[i, j] < min)
+                    {
+                        min = mas[i, j];
+                        minid = j;
+                    }
+                }
+                for (int j = minid-1; j >= 0; j--)
+                {
+                    mas[i, j+1] = mas[i, j];
+                }
+                mas[i, 0] = min;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#29++++++
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int min, delit = 0;
+            int[,] mas = new int[5, 7] {    {45, 8, 4, 3, 4,5,4 },
+                                            {10, 50, 2, 23, 4,56,34},
+                                            {15, 8, -34, 46, 8,76,23 },
+                                            {87, 2, 3, 12, 4,456,67 },
+                                            {1, 12, 43, 3, 40,87,67 }};
+            min = Math.Abs(mas[1, 0]);
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int j = 0; j < 5; j++)
+            {
+                if (Math.Abs(mas[1, j]) < min)
+                {
+                    min = j;
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = min; j < 7-1; j++)
+                {
+                    mas[i, j] = mas[i, j + 1];
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#31
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int  min,delid = 0;
+            int[,] mas = new int[5, 8] {    {45, -8, 4, 3, 4,5,4,0 },
+                                            {10, 50, 2, 23, 4,-56,34,0},
+                                            {-15, 8, -34, 46, 8,76,23,0 },
+                                            {87, 2, -3, 12, 4,-456,67,0 },
+                                            {5,67,-19,90,59,38,10,0 } };
+            int[] B = new int[5] { 11, 12, 13, 14, 15 };
+            min = mas[4, 0];
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            for (int j = 0; j < 7; j++)
+            {
+                if (mas[4,j] < min)
+                {
+                    min = mas[4, j];
+                    delid = j + 1;
+                }
+            }
+            Console.WriteLine(min);
+            Console.WriteLine(delid);
+            for ( int i = 0; i < 5; i++)
+            {
+                for (int j = 7; j > delid ; j--)
+                {
+                    mas[i, j] = mas[i, j - 1];
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mas[i,delid] = B[i];
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+2 УРОВЕНЬ
+#7+++++
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int imax = 0, jmax = 0;
+            int[,] mas = new int[6, 6] {    {23, 200, 4, 3, 4,5 },
+                                            {10, 56, 2, 23, 4,56},
+                                            {15, 8, -34, 46, 8,76},
+                                            {87, 2, 3, 140, 4,456},
+                                            {1, 12, 43, 3, 40,87},
+                                            {1, 12, 43, 3, 40,130}};
+            int max = mas[0, 0];
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                if (mas[i, i] > max)
+                {
+                    max = mas[i, i];
+                    imax = i;
+                }
+
+            }
+            Console.WriteLine(imax);
+            for (int i = 0; i < imax; i++)
+            {
+                for (int j = i+1; j < 6; j++)
+                {
+                        mas[i, j] = 0;
+                }
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#8 
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int p;
+            int mj1 = 0, mj2 = 0;
+            int[,] mas = new int[6, 6] {    {23, 200, 4, 3, 4,5 },
+                                            {10, 56, 2, 23, 4,56},
+                                            {15, 8, -34, 46, 8,76},
+                                            {87, 2, 3, 120, 4,456},
+                                            {1, 12, 43, 3, 40,87},
+                                            {1, 12, 200, 3, 40,130}};
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 6; i=i+2)
+            {
+                int max1 = mas[i, 0];
+                int max2 = mas[i + 1,0];
+                for (int j = 0; j < 6; j++)
+                {
+                    if (mas[i, j] > max1)
+                    {
+                        max1 = mas[i, j];
+                        mj1 = j;
+                    }
+                    if (mas[i + 1, j] > max2)
+                    {
+                        max2 = mas[i + 1, j];
+                        mj2 = j;
+                    }
+                }
+                p = mas[i, mj1];
+                mas[i, mj1] = mas[i + 1, mj2];
+                mas[i + 1, mj2] = p;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#9
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int p = 0;
+            const int n = 7;
+            int[,] mas = new int[6, 7] {    {23, 200, 4, 3, 4,5,34 },
+                                            {10, 56, 2, 23, 4,56,66},
+                                            {15, 8, -34, 46, 8,76,78},
+                                            {87, 2, 3, 120, 4,456,-32},
+                                            {1, 12, 43, 3, 40,87,71},
+                                            {1, 12, 200, 3, 40,130,93}};
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 6; i=i+2)
+            {
+                for (int j = 0; j < n / 2; j++)
+                {
+                    p = mas[i, j];
+                    mas[i,j] = mas[i, n-j-1];
+                    mas[i, n - j-1] = p;
+
+                }
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+3 УРОВЕНЬ
+#1
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            int p;
+            int min1,min1j, min2,min2j;
+            const int n = 5;
+            int[,] mas = new int[7, n] {    {-5, 200, 4, 3, 20},
+                                            {-3, 56, 2, 23, 4},
+                                            {-4, 8, 34, 46, 8},
+                                            {-2, 2, 3, 120, 4},
+                                            {-1, 12, 43, 3, 40},
+                                            {0, 12, 200, 3, 40},
+                                            {1,56,23,78,478 }};
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int g = 0;g < 7 - 1; g++)
+            {
+
+                for (int i = 0; i < 7 - 1; i++)
+                {
+                    min1 = mas[i, 0];
+                    min2 = mas[i + 1, 0];
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (mas[i, j] < min1)
+                        {
+                            min1 = mas[i, j];
+                        }
+                        if (mas[i + 1, j] < min2)
+                        {
+                            min2 = mas[i + 1, j];
+                        }
+                    }
+                    if (min1 < min2)
+                    {
+                        for (int j = 0; j < n; j++)
+                        {
+                            p = mas[i, j];
+                            mas[i, j] = mas[i + 1, j];
+                            mas[i + 1, j] = p;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#2
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 4;
+            int[,] mas = new int[4, n] {    {-5, 200, 4, 3},
+                                            {-3, 1, 1, 23},
+                                            {-4, 1, 1, 46},
+                                            {-2, 2, 3, 120},
+                                            };
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 4; i++)
+            {
+                mas[0, i] = 0;
+                mas[i, 0] = 0;
+                mas[n - 1, i] = 0;
+                mas[i, n - 1] = 0;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#3++++++
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 4;
+            int[] answ = new int[2 * n];
+            int[,] mas = new int[n, n] {    {1, 10, 100, 1000},
+                                            {20, 7, 9, 11},
+                                            {200, 12, 13, 14},
+                                            {2000, 1, 2, 300},
+                                            };
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int z = 0; z < n; z++)
+            {
+                for (int i = 0; i < n - z; i++)
+                {
+                    answ[z] += mas[i, i + z];
+                }
+            }
+            for (int z = 1; z < n;z++)
+            { 
+                    for (int j = 0; j < n - z; j++)
+                    {
+                        answ[2 * n - z-1] += mas[j + z, j];
+                    }
+            }
+
+            for (int i = 0; i < 2 * n - 1; i++)
+            {
+                Console.Write(answ[i] + " ");
+            }
+        }
+    }
+}
+#4
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 6;
+            int imax = 0, jmax = 0;
+            int[,] mas = new int[n, n] {    {23, 200, 4, 3, 4,5 },
+                                            {10, 56, 2, 23, 4,56},
+                                            {15, 8, -34, 46, 8,76},
+                                            {87, 2, 3, 140, 4,456},
+                                            {2, 12, 43, 3, 40,87},
+                                            {9, 12, 43, 3, 40,130}};
+            int max = mas[0, 0];
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = n/2; i < n; i++)
+            {
+                for (int j = 0; j<= i; j++)
+                {
+                    mas[i, j] = 1;
+                }
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#8
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 7, n2=5;
+            int count = 0, count2 = 0,p = 0;
+            int[,] mas = new int[n, n2] {    {-1, -200, -4, -3,-45 },
+                                            {-2, -56, -2, -23, 4},
+                                            {3, -8, -34, -46, 8},
+                                            {4, -2, -3, 1-40, 4},
+                                            {5, 12, 43, -3, -40},
+                                            {6, 12, 43, 3, -40},
+                                            {7,47,12,87,98}};
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n2; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int g = 0; g < n - 1; g++)
+            {
+                for (int i = 0; i < n - 1; i++)
+                {
+                    for (int j = 0; j < n2; j++)
+                    {
+                        if (mas[i, j] > 0)
+                        {
+                            count += 1;
+                        }
+                        if (mas[i + 1, j] > 0)
+                        {
+                            count2 += 1;
+                        }
+                    }
+                    if (count < count2)
+                    {
+                        for (int j = 0; j < n2; j++)
+                        {
+                            p = mas[i, j];
+                            mas[i, j] = mas[i + 1, j];
+                            mas[i + 1, j] = p;
+                        }
+                    }
+                    count = 0;
+                    count2 = 0;
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n2; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#10
+using System;
+namespace Program
+{
+    class Program
+    {
+        static void Main()
+        {
+            const int n = 6;
+            int p = 0;
+            int[,] mas = new int[n, n] {    {4, 3, 5, 2, 6,1 },
+                                            {10, 56, 2, 23, 4,56},
+                                            {15, 8, -34, 46, 8,76},
+                                            {87, 2, 3, 140, 4,456},
+                                            {2, 12, 43, 3, 40,87},
+                                            {9, 12, 43, 3, 40,130}};
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            for (int i = 0; i < n; i++)
+            {
+                for (int g = 0; g < n; g += 2)
+                {
+                    for (int j = 0; j < n - 2; j += 2)
+                    {
+                        if (mas[i, j] < mas[i, j + 2])
+                        {
+                            p = mas[i, j];
+                            mas[i, j] = mas[i, j + 2];
+                            mas[i, j + 2] = p;
+                        }
+                    }
+                    for (int j = 1; j < n - 2; j += 2)
+                    {
+                        if (mas[i, j] > mas[i, j + 2])
+                        {
+                            p = mas[i, j];
+                            mas[i, j] = mas[i, j + 2];
+                            mas[i, j + 2] = p;
+                        }
+                    }
+
+                }
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.Write("{0,4:d}", mas[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+#11
+using System;
+class Lab
+{
+    static void Main()
+    {
+        const int n = 6;
+        int p = 0,x = 0;
+        int[,] mas = new int[n, n] {    {4, 3, 2, 2, 8,1 },
+                                            {10, 4, 0, 23, 4,56},
+                                            {15, 0, 0, 0, 8,76},
+                                            {87, 1, 3, 140, 4,456},
+                                            {2, 12, 2, 3, 40,87},
+                                            {9, 12, 0, 3, 40,130}};
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                Console.Write("{0,4:d}", mas[i, j]);
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (mas[i, j] == 0)
+                {
+                    for (int g = i; g < n - 1; g++)
+                    {
+                        for (int j1 = 0; j1 < n; j1++)
+                        {
+                            p = mas[g, j1];
+                            mas[g, j1] = mas[g + 1, j1];
+                            mas[g + 1, j1] = p;
+                        }
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < n-3; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                Console.Write("{0,4:d}", mas[i, j]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
